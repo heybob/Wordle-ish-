@@ -22,3 +22,10 @@ export const ERROR_MSGS = {
     NO_NUM: 'Words do not contain numbers.',
     NO_SPECIAL: 'Words do not contain special characters.'
 }
+
+export const ENDGAME_TYPE = {
+    WIN: 'winner',
+    LOSE: 'loser'
+}
+
+export const APP_TITLE = 'Wordle(ish)'

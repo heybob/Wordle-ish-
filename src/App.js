@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect, useState, useRef} from 'react';
 import {Tile} from './classes/Tile';
 import { TileList } from './components/TileList';
-import { cardStates, MODAL_TEXT, ERROR_MSGS } from './shared/constants';
+import { cardStates, MODAL_TEXT, ERROR_MSGS, ENDGAME_TYPE, APP_TITLE } from './shared/constants';
 import { Modal } from './components/Modal/Modal'; 
 import { StringFrequencyMap } from './classes/StringFrequencyMap';
 
@@ -30,7 +30,7 @@ function App() {
   const maxAttempts = 5;
   const inputRef = useRef();
   const endGame = (status) => {
-    if(status === 'winner'){
+    if(status === ENDGAME_TYPE.WIN){
       setModal(true, winningModal)
     } else {
       setModal(true, losingModal);
@@ -43,9 +43,9 @@ function App() {
 
   useEffect(()=> {
     if(isWordleMatch()) {
-      endGame('winner');
+      endGame(ENDGAME_TYPE.WIN);
     } else if(wordleSubmitCount === maxAttempts) {
-      endGame('loser');
+      endGame(ENDGAME_TYPE.LOSE);
     } else {
       setWordleInput('');
       inputRef.current.value = '';
@@ -121,7 +121,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Wordle(ish)</h1>
+      <h1>{APP_TITLE}</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" 
               className="input-text--wordle"
