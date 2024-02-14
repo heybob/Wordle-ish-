@@ -13,7 +13,12 @@ export const MODAL_TEXT = {
     LOSING: {
         TITLE: "Sorry!", 
         MESSAGE: "You were unable to guess the word! Please try again", 
-        BUTTON_NAME: 'Play Again' 
+        BUTTON_NAME: 'Play Again!' 
     }
 
+}
+export const ERROR_MSGS = {
+    MIN: 'Words must contain a minimum of 5 characters.',
+    NO_NUM: 'Words do not contain numbers.',
+    NO_SPECIAL: 'Words do not contain special characters.'
 }

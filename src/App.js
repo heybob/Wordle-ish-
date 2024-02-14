@@ -2,7 +2,7 @@ import './App.css';
 import {useEffect, useState, useRef} from 'react';
 import {Tile} from './classes/Tile';
 import { TileList } from './components/TileList';
-import { cardStates, MODAL_TEXT } from './shared/constants';
+import { cardStates, MODAL_TEXT, ERROR_MSGS } from './shared/constants';
 import { Modal } from './components/Modal/Modal'; 
 import { StringFrequencyMap } from './classes/StringFrequencyMap';
 
@@ -94,15 +94,15 @@ function App() {
 
   function isInputValid() {
     if(wordleInput.length < 5) {
-      setErrorText('Words must contain a minimum of 5 characters.');
+      setErrorText(ERROR_MSGS.MIN);
       setInputError(true);
       return false;
     } else if(/\d/.test(wordleInput)) {
-      setErrorText('Words do not contain numbers.');
+      setErrorText(ERROR_MSGS.NO_NUM);
       setInputError(true);
       return false;
     } else if(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~œ∑´®†¥¨ˆøπ“‘«åß∂ƒ©˙∆˚¬…æ≈ç√∫˜µ≤≥÷¡™£¢∞§¶•ªº–≠]/.test(wordleInput)) {
-      setErrorText('Words do not contain special characters.');
+      setErrorText(ERROR_MSGS.NO_SPECIAL);
       setInputError(true);
       return false;
     } else {
