@@ -42,8 +42,13 @@ function App() {
   }, [wordleInput, wordleData, errorText, modalState, modalDetails])
 
   useEffect(()=> {
-    if(wordleSubmitCount === maxAttempts) {
-      endGame('Loser');
+    if(isWordleMatch()) {
+      endGame('winner');
+    } else if(wordleSubmitCount === maxAttempts) {
+      endGame('loser');
+    } else {
+      setWordleInput('');
+      inputRef.current.value = '';
     }
   }, [wordleSubmitCount])
 
@@ -111,11 +116,6 @@ function App() {
       setInputError(false);
       createWordleRow();
       setWordleSubmitCount((prev) => prev + 1);
-      setWordleInput('');
-      inputRef.current.value = '';
-      if(isWordleMatch()) {
-        endGame('winner')
-      }
     }
   }
 
@@ -130,12 +130,22 @@ function App() {
               disabled={wordleSubmitCount === maxAttempts} 
               placeholder="Enter a 5 letter word"
               onChange={(e) => (setWordleInput(e.target.value.toLowerCase()))} />
-        <button className="input-button--wordle" type="submit" disabled={wordleSubmitCount === maxAttempts || !wordleInput.length}>Submit</button>
+        <button className="input-button--wordle" 
+          type="submit" 
+          disabled={wordleSubmitCount === maxAttempts || !wordleInput.length}>Submit</button>
       </form>
       {inputError && (<p className='error'>{errorText}</p>)}
-      {wordleData.map((row, i) => (<div key={i} className="row-container"><TileList
-     tileRow={row} /></div>))}  
-     {modalState === true && (<Modal title={modalDetails.title} message={modalDetails.message} confirmCallback={modalDetails.confirmCallback} buttonName={modalDetails.buttonName} />) }
+      {wordleData.map((row, i) => (
+        <div key={i} className="row-container">
+          <TileList tileRow={row} />
+        </div>)
+      )}  
+     {modalState === true && (
+     <Modal 
+      title={modalDetails.title} 
+      message={modalDetails.message} 
+      confirmCallback={modalDetails.confirmCallback} 
+      buttonName={modalDetails.buttonName} />) }
     </div>
   );
 }
