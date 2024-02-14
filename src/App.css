@@ -36,3 +36,69 @@
     transform: rotate(360deg);
   }
 }
+.row-container {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: center;
+}
+.tile-container {
+  width: 62px;
+  height: 62px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: cetner;
+  background-color: gray;
+}
+.tile-container p {
+  margin: 0;
+  padding: 0;
+  font-size: 32px;
+  font-weight: bold;
+  vertical-align: middle;
+  display: inline-flex;
+  align-self: center;
+  text-transform: capitalize;
+ 
+}
+.error {
+  color: red;
+}
+
+.input-text--wordle {
+  padding: 10px;
+  border-radius: 10px 0 0 10px;
+  border: 1px lightgray solid;
+  font-size: 16px;
+}
+
+.input-button--wordle {
+  padding: 10px;
+  border-radius: 0 10px 10px 0;
+  border: 1px solid lightgray;
+  background-color: #32bbe8;
+  color: white;
+  font-weight: bold;
+  border-left: 0px;
+  font-size: 16px;
+}
+.button--wordle:hover, .input-button--wordle:hover {
+  background-color: #009bcf;
+  transition: all 0.5s;
+}
+
+.button--wordle {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  background-color: #32bbe8;
+  color: white;
+  font-weight: bold;
+  border-left: 0px;
+  font-size: 16px;
+}
+
+form {
+  margin-bottom: 2rem;
+}
